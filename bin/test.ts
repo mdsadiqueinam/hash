@@ -1,6 +1,6 @@
 import { assert } from '@japa/assert'
 import { expectTypeOf } from '@japa/expect-type'
-import { processCLIArgs, configure, run } from '@japa/runner'
+import { processCliArgs, configure, run } from '@japa/runner'
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +15,11 @@ import { processCLIArgs, configure, run } from '@japa/runner'
 |
 | Please consult japa.dev/runner-config for the config docs.
 */
-processCLIArgs(process.argv.slice(2))
 configure({
+  ...processCliArgs(process.argv.slice(2)),
   files: ['tests/**/*.spec.ts'],
   plugins: [assert(), expectTypeOf()],
+  importer: (path) => import(path),
 })
 
 /*

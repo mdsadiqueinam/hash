@@ -1,8 +1,9 @@
 {
   "extends": "@adonisjs/tsconfig/tsconfig.package.json",
   "compilerOptions": {
+    "module": "commonjs",
     "rootDir": "./",
     "outDir": "./build",
     "allowJs": true
-  }
+  },
 }
