@@ -15,7 +15,7 @@ export default class DelegatingHashDriver implements HashDriverContract {
     p: number
   }>()
 
-  static createInstance() {
+  static createInstance(defaultId: 'argon2id' | 'bcrypt' | 'scrypt' = 'argon2id') {
     const map = new Map<string, HashDriverContract>()
     map.set(
       'argon2id',
@@ -25,7 +25,7 @@ export default class DelegatingHashDriver implements HashDriverContract {
     )
     map.set('bcrypt', new Bcrypt({}))
     map.set('scrypt', new Scrypt({}))
-    return new DelegatingHashDriver('bcrypt', map)
+    return new DelegatingHashDriver(defaultId, map)
   }
 
   constructor(idForMake: string, idToHashDriver: Map<string, HashDriverContract>) {
