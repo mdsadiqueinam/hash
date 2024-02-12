@@ -7,12 +7,12 @@
  * file that was distributed with this source code.
  */
 
-import { RuntimeException } from '@poppinss/utils'
+import { Exception } from '@poppinss/utils'
 
-import debug from './debug.js'
-import { Hash } from './hash.js'
-import { Fake } from './drivers/fake.js'
-import type { HashDriverContract, ManagerDriverFactory } from './types.js'
+import debug from './debug'
+import { Hash } from './hash'
+import { Fake } from './drivers/fake'
+import type { HashDriverContract, ManagerDriverFactory } from './types'
 
 /**
  * HashManager implements the manager/builder pattern to create a use multiple
@@ -56,8 +56,10 @@ export class HashManager<KnownHashers extends Record<string, ManagerDriverFactor
   use<Hasher extends keyof KnownHashers>(hasher?: Hasher): Hash {
     let hasherToUse: keyof KnownHashers | undefined = hasher || this.config.default
     if (!hasherToUse) {
-      throw new RuntimeException(
-        'Cannot create hash instance. No default hasher is defined in the config'
+      throw new Exception(
+        'Cannot create hash instance. No default hasher is defined in the config',
+        500,
+        'E_RUNTIME_EXCEPTION'
       )
     }
 

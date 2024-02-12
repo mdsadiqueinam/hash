@@ -7,11 +7,11 @@
  * file that was distributed with this source code.
  */
 
-import { safeEqual } from '@poppinss/utils'
+import { safeEqual } from '@poppinss/utils/build/helpers'
 
-import { PhcFormatter } from '../phc_formatter.js'
-import type { ScryptConfig, HashDriverContract } from '../types.js'
-import { randomBytesAsync, RangeValidator, scryptAsync, MAX_UINT32 } from '../helpers.js'
+import { PhcFormatter } from '../phc_formatter'
+import type { ScryptConfig, HashDriverContract } from '../types'
+import { randomBytesAsync, RangeValidator, scryptAsync, MAX_UINT32 } from '../helpers'
 
 /**
  * Hash driver built on top of "scrypt" hash algorigthm. Under the hood

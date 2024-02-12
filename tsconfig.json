@@ -5,5 +5,5 @@
     "rootDir": "./",
     "outDir": "./build",
     "allowJs": true
-  },
+  }
 }

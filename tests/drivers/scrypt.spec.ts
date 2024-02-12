@@ -8,8 +8,8 @@
  */
 
 import { test } from '@japa/runner'
-import { Scrypt } from '../../src/drivers/scrypt.js'
-import { PhcFormatter } from '../../src/phc_formatter.js'
+import { Scrypt } from '../../src/drivers/scrypt'
+import { PhcFormatter } from '../../src/phc_formatter'
 
 test.group('argon | scrypt config', () => {
   test('validate block size property', async ({ assert }) => {

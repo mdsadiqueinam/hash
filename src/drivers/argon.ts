@@ -8,17 +8,12 @@
  */
 
 import type argon2 from 'argon2'
-import { safeEqual } from '@poppinss/utils'
+import { safeEqual } from '@poppinss/utils/build/helpers'
 
-import { PhcFormatter } from '../phc_formatter.js'
-import {
-  MAX_UINT24,
-  MAX_UINT32,
-  EnumValidator,
-  RangeValidator,
-  randomBytesAsync,
-} from '../helpers.js'
-import type { ArgonConfig, ArgonVariants, HashDriverContract } from '../types.js'
+import { PhcFormatter } from '../phc_formatter'
+import { MAX_UINT24, MAX_UINT32, EnumValidator, RangeValidator, randomBytesAsync } from '../helpers'
+import type { ArgonConfig, ArgonVariants, HashDriverContract } from '../types'
+import { esmRequire } from '@poppinss/utils'
 
 /**
  * Hash driver built on top of "argon2" hash algorigthm. Under the hood
@@ -83,13 +78,13 @@ export class Argon implements HashDriverContract {
   /**
    * Dynamically importing underlying binding
    */
-  async #importBinding() {
+  async #importBinding(): Promise<typeof argon2> {
     if (this.#binding) {
       return this.#binding
     }
 
-    this.#binding = await import('argon2')
-    return this.#binding
+    this.#binding = esmRequire('argon2')
+    return this.#binding!
   }
 
   /**

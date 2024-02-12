@@ -10,10 +10,11 @@
 import * as bcryptBase64 from '../legacy/bcrypt_base64.cjs'
 
 import type bcrypt from 'bcrypt'
-import { safeEqual } from '@poppinss/utils'
-import { PhcFormatter } from '../phc_formatter.js'
-import type { HashDriverContract, BcryptConfig } from '../types.js'
-import { EnumValidator, randomBytesAsync, RangeValidator } from '../helpers.js'
+import { safeEqual } from '@poppinss/utils/build/helpers'
+import { PhcFormatter } from '../phc_formatter'
+import type { HashDriverContract, BcryptConfig } from '../types'
+import { EnumValidator, randomBytesAsync, RangeValidator } from '../helpers'
+import { esmRequire } from '@poppinss/utils'
 
 /**
  * Hash driver built on top of "bcrypt" hash algorigthm. Under the hood
@@ -60,13 +61,13 @@ export class Bcrypt implements HashDriverContract {
   /**
    * Dynamically importing underlying binding
    */
-  async #importBinding() {
+  async #importBinding(): Promise<typeof bcrypt> {
     if (this.#binding) {
       return this.#binding
     }
 
-    this.#binding = await import('bcrypt')
-    return this.#binding
+    this.#binding = esmRequire('bcrypt')
+    return this.#binding!
   }
 
   /**

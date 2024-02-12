@@ -1,24 +1,14 @@
 {
   "name": "@mdsadiqueinam/hash",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Framework agnostic Password hashing package with support for PHC string format",
   "main": "build/index.js",
-  "type": "commonjs",
   "files": [
     "build",
     "!build/bin",
     "!build/coverage",
     "!build/tests"
   ],
-  "exports": {
-    ".": "./build/index.js",
-    "./types": "./build/src/types.js",
-    "./drivers/argon": "./build/src/drivers/argon.js",
-    "./drivers/bcrypt": "./build/src/drivers/bcrypt.js",
-    "./drivers/scrypt": "./build/src/drivers/scrypt.js",
-    "./phc_formatter": "./build/src/phc_formatter.js",
-    "./factories": "./build/factories/main.js"
-  },
   "engines": {
     "node": ">=18.16.0"
   },
@@ -74,7 +64,7 @@
   },
   "dependencies": {
     "@phc/format": "^1.0.0",
-    "@poppinss/utils": "^6.7.1"
+    "@poppinss/utils": "^5.0.0"
   },
   "peerDependencies": {
     "argon2": "^0.31.2",
@@ -133,7 +123,8 @@
       "./src/drivers/scrypt.ts",
       "./src/phc_formatter.ts",
       "./src/types.ts",
-      "./factories/main.ts"
+      "./factories/main.ts",
+      "./factories/delegating_hash.ts"
     ],
     "outDir": "./build",
     "clean": true,

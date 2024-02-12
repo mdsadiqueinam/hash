@@ -9,8 +9,8 @@
 
 import argon2 from 'argon2'
 import { test } from '@japa/runner'
-import { Argon } from '../../src/drivers/argon.js'
-import { PhcFormatter } from '../../src/phc_formatter.js'
+import { Argon } from '../../src/drivers/argon'
+import { PhcFormatter } from '../../src/phc_formatter'
 
 test.group('argon | validate config', () => {
   test('validate iterations property', async ({ assert }) => {
