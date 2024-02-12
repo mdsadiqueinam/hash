@@ -80,12 +80,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/poppinss/hash.git"
+    "url": "git+ssh://git@github.com/mdsadiqueinam/hash.git"
   },
   "bugs": {
-    "url": "https://github.com/poppinss/hash/issues"
+    "url": "https://github.com/mdsadiqueinam/hash/issues"
   },
-  "homepage": "https://github.com/poppinss/hash#readme",
+  "homepage": "https://github.com/mdsadiqueinam/hash#readme",
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
